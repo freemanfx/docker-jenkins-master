@@ -1,5 +1,7 @@
 DOCKER_VOLUME := $(HOME)/work/docker/jenkins_data
 
+build-custom:
+	@docker build -t=jenkins-master-image .
 build:
 	@docker pull jenkins
 run:
