@@ -1,9 +1,7 @@
 DOCKER_VOLUME := $(HOME)/work/docker/jenkins_data
 
-build-custom:
-	@docker build -t=jenkins-master-image .
 build:
-	@docker pull jenkins
+	@docker build -t=jenkins-master-image .
 run:
 	echo $(DOCKER_VOLUME)
 	@docker run -p 8080:8080 -d \
@@ -11,7 +9,7 @@ run:
 				-v $(DOCKER_VOLUME):/var/jenkins_home \
 				--env JAVA_OPTS="-Xmx8192m" \
 				--env JENKINS_OPTS="--handlerCountStartup=100 --handlerCountMax=300"\
-				jenkins
+				jenkins-master-image
 	
 start:
 	@docker start jenkins-master
